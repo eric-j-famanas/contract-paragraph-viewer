@@ -11,30 +11,13 @@ var routes = require('./api/routes/contract-routes'); //importing route
 
 const originWhitelist = ['http://localhost:3000'];
 
-
-// CORS Middleware
-// middleware route that all requests pass through
-router.use((request, response, next) => {
-  console.log('Server info: Request received');
-
-  let origin = request.headers.origin;
-
-  // only allow requests from origins that we trust
-  if (originWhitelist.indexOf(origin) > -1) {
-    response.setHeader('Access-Control-Allow-Origin', origin);
-  }
-
-  // only allow get requests, separate methods by comma e.g. 'GET, POST'
-  response.setHeader('Access-Control-Allow-Methods', 'GET');
-  response.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
-  response.setHeader('Access-Control-Allow-Credentials', true);
-
-  // push through to the proper route
+// Allow CORS
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   next();
 });
-
-//register the route
-
+//register the routes
 routes(app);
 
 // listen on specified port

@@ -22,7 +22,7 @@ module.exports = function (app) {
       console.log("User has requested all contracts");
 
       // Send a JSON parsed response
-      response.send('All Contracts');
+      response.send(JSON.stringify('All Contracts'));
     });
 
 
