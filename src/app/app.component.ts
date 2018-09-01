@@ -23,11 +23,11 @@ export class AppComponent {
     this.contractHttp.getSingleContract('1');
   }
 
-  public testGetIdWithParamsRequest() {
-    this.contractHttp.getSingleContract('1', 1);
+  public testGetIdWithAllParagraphsForPage() {
+    this.contractHttp.getAllParagraphsForContract('1', 1);
   }
 
   public testGetIdWithAllParagraphs() {
-    this.contractHttp.getAllParagraphs('1');
+    this.contractHttp.getAllParagraphsForContract('1');
   }
 }

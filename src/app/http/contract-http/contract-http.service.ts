@@ -21,28 +21,28 @@ export class ContractHttpService {
     });
   }
 
-  public getSingleContract(id: string, pageNumber?: number) {
-    if (pageNumber == null) {
-      return this.getContractNoPageNumber(id);
-    }
-
-    return this.getContractWithPageNumber(id, pageNumber);
-  }
-
-  public getAllParagraphs(id: string) {
-    return this.http.get(`${this.endpointWithId(id)}/paragraphs`).subscribe((response) => {
-      console.log(response);
-    });
-  }
-
-  private getContractNoPageNumber(id: string) {
+  public getSingleContract(id: string) {
     return this.http.get(`${this.endpointWithId(id)}`).subscribe((response) => {
       console.log(response);
     });
   }
 
-  private getContractWithPageNumber(id: string, pageNumber: number) {
-    return this.http.get(`${this.endpointWithId(id)}?page=${pageNumber}`).subscribe((response) => {
+  public getAllParagraphsForContract(id: string, pageNumber?: number) {
+    if (pageNumber == null) {
+      return this.getParagraphsWithNoPageNumber(id);
+    }
+
+    return this.getParagraphsForPageNumber(id, pageNumber);
+  }
+
+  private getParagraphsWithNoPageNumber(id: string) {
+    return this.http.get(`${this.endpointWithId(id)}/paragraphs`).subscribe((response) => {
+      console.log(response);
+    });
+  }
+
+  private getParagraphsForPageNumber(id: string, pageNumber: number) {
+    return this.http.get(`${this.endpointWithId(id)}/paragraphs?page=${pageNumber}`).subscribe((response) => {
       console.log(response);
     });
   }

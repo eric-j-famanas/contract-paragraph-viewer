@@ -39,19 +39,8 @@ module.exports = function (app) {
     .get((request, response) => {
       var contractId = request.params.contractId;
 
-      var urlParts = url.parse(request.url, true);
-      var parameters = urlParts.query;
-
-      // TODO: Try to type as model
-      var page = parameters.page;
-
       // TODO: Replace with logging system
       console.log(`User has requested a specific contract: ${contractId}`);
-
-      if (parameters.page != null) {
-        // TODO: Replace with logging system
-        console.log(`User has requested page: ${page}`);
-      }
 
       // Send a JSON response
       response.send(JSON.stringify(`Your sample contract: ${contractId}`))
@@ -63,6 +52,17 @@ module.exports = function (app) {
   app.route('/contracts/:contractId/paragraphs')
     .get((request, response) => {
       var contractId = request.params.contractId;
+
+      var urlParts = url.parse(request.url, true);
+      var parameters = urlParts.query;
+
+      // TODO: Try to type as model
+      var page = parameters.page;
+
+      if (parameters.page != null) {
+        // TODO: Replace with logging system
+        console.log(`User has requested page: ${page}`);
+      }
 
       // TODO: Replace with logging system
       console.log(`User has all paragraphs a specific contract: ${contractId}`);
