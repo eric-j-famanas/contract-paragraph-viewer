@@ -26,4 +26,8 @@ export class AppComponent {
   public testGetIdWithParamsRequest() {
     this.contractHttp.getSingleContract('1', 1);
   }
+
+  public testGetIdWithAllParagraphs() {
+    this.contractHttp.getAllParagraphs('1');
+  }
 }

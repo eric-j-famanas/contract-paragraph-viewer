@@ -11,10 +11,12 @@ export class ContractHttpService {
   ) {
   }
 
-  private server: string = 'http://localhost:3000/contracts';
+  // TODO: This should be a token
+  private serverUri = 'http://localhost:3000/contracts';
+
 
   public getAllContracts() {
-    return this.http.get(`${this.server}`).subscribe((response) => {
+    return this.http.get(`${this.serverUri}`).subscribe((response) => {
       console.log(response);
     });
   }
@@ -25,18 +27,27 @@ export class ContractHttpService {
     }
 
     return this.getContractWithPageNumber(id, pageNumber);
+  }
 
+  public getAllParagraphs(id: string) {
+    return this.http.get(`${this.endpointWithId(id)}/paragraphs`).subscribe((response) => {
+      console.log(response);
+    });
   }
 
   private getContractNoPageNumber(id: string) {
-    return this.http.get(`${this.server}/${id}`).subscribe((response) => {
+    return this.http.get(`${this.endpointWithId(id)}`).subscribe((response) => {
       console.log(response);
     });
   }
 
   private getContractWithPageNumber(id: string, pageNumber: number) {
-    return this.http.get(`${this.server}/${id}?page=${pageNumber}`).subscribe((response) => {
+    return this.http.get(`${this.endpointWithId(id)}?page=${pageNumber}`).subscribe((response) => {
       console.log(response);
     });
+  }
+
+  private endpointWithId(id: string): string {
+    return `${this.serverUri}/${id}`;
   }
 }

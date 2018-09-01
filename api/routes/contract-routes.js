@@ -4,7 +4,9 @@ const url = require('url');
 
 module.exports = function (app) {
 
-  // Landing page
+  /**
+   * Goes to app root
+   */
   app.route('/')
     .get((request, response) => {
       // TODO: Replace with logging system
@@ -14,7 +16,9 @@ module.exports = function (app) {
       response.send('You have arrived at the landing page');
     });
 
-  // Return a list of all contracts
+  /**
+   * Returns all contracts
+   */
   app.route('/contracts')
     .get((request, response) => {
 
@@ -22,10 +26,15 @@ module.exports = function (app) {
       console.log("User has requested all contracts");
 
       // Send a JSON parsed response
-      response.send(JSON.stringify('All Contracts'));
+      response.send(JSON.stringify(getContracts()));
     });
 
 
+  /**
+   * returns a specific contract by id
+   * can pass pages as optional parameter in the search string
+   * to return a specific page
+   */
   app.route('/contracts/:contractId')
     .get((request, response) => {
       var contractId = request.params.contractId;
@@ -44,7 +53,44 @@ module.exports = function (app) {
         console.log(`User has requested page: ${page}`);
       }
 
-      // Send a JSON respons
+      // Send a JSON response
       response.send(JSON.stringify(`Your sample contract: ${contractId}`))
     });
+
+  /**
+   * Returns all paragraphs associated with a specific contract
+   */
+  app.route('/contracts/:contractId/paragraphs')
+    .get((request, response) => {
+      var contractId = request.params.contractId;
+
+      // TODO: Replace with logging system
+      console.log(`User has all paragraphs a specific contract: ${contractId}`);
+
+      // Send a JSON response
+      response.send(JSON.stringify(`Your sample paragraphs for contract: ${contractId}`))
+    });
+
+
+
+  // DEV / TESTING ONLY
+  const getContracts = () => {
+    return {
+      data: {
+        type: "contracts",
+        id: "dc89ff49-8449-11e7-ac1d-3c52820efd20",
+        attributes: {
+          name: "Contract Name"
+        }
+      },
+      relationships: {
+        paragraphs: {
+          links: {
+            self: "\/contracts\/dc89ff49-8449-11e7-ac1d-3c52820efd20\/paragraphs"
+          }
+        }
+      }
+    }
+
+  };
 };
