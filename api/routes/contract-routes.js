@@ -45,6 +45,6 @@ module.exports = function (app) {
       }
 
       // Send a JSON respons
-      response.send(`Your sample contract: ${contractId}`)
+      response.send(JSON.stringify(`Your sample contract: ${contractId}`))
     });
 };

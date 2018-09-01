@@ -18,4 +18,25 @@ export class ContractHttpService {
       console.log(response);
     });
   }
+
+  public getSingleContract(id: string, pageNumber?: number) {
+    if (pageNumber == null) {
+      return this.getContractNoPageNumber(id);
+    }
+
+    return this.getContractWithPageNumber(id, pageNumber);
+
+  }
+
+  private getContractNoPageNumber(id: string) {
+    return this.http.get(`${this.server}/${id}`).subscribe((response) => {
+      console.log(response);
+    });
+  }
+
+  private getContractWithPageNumber(id: string, pageNumber: number) {
+    return this.http.get(`${this.server}/${id}?page=${pageNumber}`).subscribe((response) => {
+      console.log(response);
+    });
+  }
 }

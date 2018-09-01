@@ -15,7 +15,15 @@ export class AppComponent {
 
   }
 
-  public testApiRequest() {
+  public testGetAllRequest() {
     this.contractHttp.getAllContracts();
+  }
+
+  public testGetIdRequest() {
+    this.contractHttp.getSingleContract('1');
+  }
+
+  public testGetIdWithParamsRequest() {
+    this.contractHttp.getSingleContract('1', 1);
   }
 }
