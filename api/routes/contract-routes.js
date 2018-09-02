@@ -26,7 +26,7 @@ module.exports = function (app) {
       console.log("User has requested all contracts");
 
       // Send a JSON parsed response
-      response.send(JSON.stringify(getContracts()));
+      response.send(JSON.stringify(getAllContracts()));
     });
 
 
@@ -43,7 +43,7 @@ module.exports = function (app) {
       console.log(`User has requested a specific contract: ${contractId}`);
 
       // Send a JSON response
-      response.send(JSON.stringify(`Your sample contract: ${contractId}`))
+      response.send(JSON.stringify(getContract()))
     });
 
   /**
@@ -72,9 +72,14 @@ module.exports = function (app) {
     });
 
 
+  const getAllContracts = () => {
+    return [
+      getContract(),
+    ]
+  };
 
   // DEV / TESTING ONLY
-  const getContracts = () => {
+  const getContract = () => {
     return {
       data: {
         type: "contracts",
@@ -97,15 +102,15 @@ module.exports = function (app) {
     return {
       data: [
         {
-          type:"contract-paragraphs",
-          id:"0d60b462-2b98-11e8-97a1-080027a8df8b",
+          type: "contract-paragraphs",
+          id: "0d60b462-2b98-11e8-97a1-080027a8df8b",
           attributes: {
             text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat"
           }
         },
         {
-          type:"contract-paragraphs",
-          id:"0d60b462-2b98-11e8-97a1-080027a8df8a",
+          type: "contract-paragraphs",
+          id: "0d60b462-2b98-11e8-97a1-080027a8df8a",
           attributes: {
             text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat"
           }

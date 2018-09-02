@@ -1,8 +1,8 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {IContractDataWrapper} from '../../models/data/i-contract-data-wrapper';
-import {IContractParagraphsDataWrapper} from '../../models/data/i-contract-paragraphs-data-wrapper';
+import {IContractData} from '../../models/data/contracts/i-contract-data';
+import {IContractParagraphsData} from '../../models/data/contracts/i-contract-paragraphs-data';
 import {ContractEndpointerBuilderService} from './contract-endpointer-builder.service';
 
 @Injectable({
@@ -23,8 +23,8 @@ export class ContractHttpService {
    * Returns an observable response for all contracts in the database
    */
   // TODO: Error handling
-  public getAllContracts(): Observable<IContractDataWrapper> {
-    return this.http.get<IContractDataWrapper>(`${this.serverUri}`);
+  public getAllContracts(): Observable<IContractData[]> {
+    return this.http.get<IContractData[]>(`${this.serverUri}`);
   }
 
   /**
@@ -33,10 +33,8 @@ export class ContractHttpService {
    * @param id
    */
   // TODO: Error handling
-  public getSingleContract(id: string) {
-    return this.http.get(`${this.endpointBuilder.getContractIdEndpoint(id)}`).subscribe((response) => {
-      console.log(response);
-    });
+  public getSingleContract(id: string): Observable<IContractData> {
+    return this.http.get<IContractData>(`${this.endpointBuilder.getContractIdEndpoint(id)}`);
   }
 
   /**
@@ -50,11 +48,11 @@ export class ContractHttpService {
     return pageNumber == null ? this.getParagraphsWithNoPageNumber(id) : this.getParagraphsForPageNumber(id, pageNumber);
   }
 
-  private getParagraphsWithNoPageNumber(id: string): Observable<IContractParagraphsDataWrapper> {
-    return this.http.get<IContractParagraphsDataWrapper>(this.endpointBuilder.getParagraphsNoPagesEndpoint(id));
+  private getParagraphsWithNoPageNumber(id: string): Observable<IContractParagraphsData> {
+    return this.http.get<IContractParagraphsData>(this.endpointBuilder.getParagraphsNoPagesEndpoint(id));
   }
 
-  private getParagraphsForPageNumber(id: string, pageNumber: number): Observable<IContractParagraphsDataWrapper> {
-    return this.http.get<IContractParagraphsDataWrapper>(this.endpointBuilder.getParagraphsWithPagesEndpoint(id, pageNumber));
+  private getParagraphsForPageNumber(id: string, pageNumber: number): Observable<IContractParagraphsData> {
+    return this.http.get<IContractParagraphsData>(this.endpointBuilder.getParagraphsWithPagesEndpoint(id, pageNumber));
   }
 }

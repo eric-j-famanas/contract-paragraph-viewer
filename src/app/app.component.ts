@@ -22,7 +22,9 @@ export class AppComponent {
   }
 
   public testGetIdRequest() {
-    this.contractHttp.getSingleContract('1');
+    this.contractHttp.getSingleContract('1').subscribe((data) => {
+      console.log(data);
+    });
   }
 
   public testGetIdWithAllParagraphsForPage() {
