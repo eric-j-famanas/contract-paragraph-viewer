@@ -7,7 +7,7 @@ import {ContractEndpointBuilderService} from './contract-endpoint-builder.servic
 import {BaseHttpService} from '../base-http.service';
 
 @Injectable({
-  providedIn: 'root' // TODO: remove when this service instantiation is moved
+  providedIn: 'root'
 })
 export class ContractHttpService extends BaseHttpService {
 
