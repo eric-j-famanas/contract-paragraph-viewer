@@ -16,7 +16,9 @@ export class AppComponent {
   }
 
   public testGetAllRequest() {
-    this.contractHttp.getAllContracts();
+    this.contractHttp.getAllContracts().subscribe((data) => {
+      console.log(data);
+    });
   }
 
   public testGetIdRequest() {
@@ -24,10 +26,14 @@ export class AppComponent {
   }
 
   public testGetIdWithAllParagraphsForPage() {
-    this.contractHttp.getAllParagraphsForContract('1', 1);
+    this.contractHttp.getAllParagraphsForContract('1', 1).subscribe((data) => {
+      console.log(data);
+    });
   }
 
   public testGetIdWithAllParagraphs() {
-    this.contractHttp.getAllParagraphsForContract('1');
+    this.contractHttp.getAllParagraphsForContract('1').subscribe((data) => {
+      console.log(data);
+    });
   }
 }
