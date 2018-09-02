@@ -3,7 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {IContractData} from '../../models/data/contracts/i-contract-data';
 import {IContractParagraphsData} from '../../models/data/contracts/i-contract-paragraphs-data';
-import {ContractEndpointerBuilderService} from './contract-endpointer-builder.service';
+import {ContractEndpointBuilderService} from './contract-endpoint-builder.service';
 
 @Injectable({
   providedIn: 'root' // TODO: remove when this service instantiation is moved
@@ -12,19 +12,16 @@ export class ContractHttpService {
 
   constructor(
     private readonly http: HttpClient,
-    private readonly endpointBuilder: ContractEndpointerBuilderService
+    private readonly endpointBuilder: ContractEndpointBuilderService
   ) {
   }
-
-  private serverUri = 'http://localhost:3000/contracts';
-
 
   /**
    * Returns an observable response for all contracts in the database
    */
   // TODO: Error handling
   public getAllContracts(): Observable<IContractData[]> {
-    return this.http.get<IContractData[]>(`${this.serverUri}`);
+    return this.http.get<IContractData[]>(`${this.endpointBuilder.getAllContracts()}`);
   }
 
   /**

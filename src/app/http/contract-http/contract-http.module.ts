@@ -2,7 +2,7 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {HttpClientModule} from '@angular/common/http';
 import {ContractHttpService} from './contract-http.service';
-import {ContractEndpointerBuilderService} from './contract-endpointer-builder.service';
+import {ContractEndpointBuilderService} from './contract-endpoint-builder.service';
 
 @NgModule({
   imports: [
@@ -12,10 +12,10 @@ import {ContractEndpointerBuilderService} from './contract-endpointer-builder.se
   declarations: [],
   providers: [
     ContractHttpService,
-    ContractEndpointerBuilderService,
+    ContractEndpointBuilderService,
     {
-      provide: 'trServerUri',
-      useValue: 'http://localhost:3000/contracts'   // TODO: This should be a token
+      provide: 'trApiEndpoint',
+      useValue: 'http://localhost:3000/api/'   // TODO: This should be a token
     }
   ]
 })

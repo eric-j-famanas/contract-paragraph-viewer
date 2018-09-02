@@ -1,8 +1,14 @@
 import { TestBed, async } from '@angular/core/testing';
 import { AppComponent } from './app.component';
+import {BrowserModule} from '@angular/platform-browser';
+import {ContractHttpModule} from './http/contract-http/contract-http.module';
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [
+        BrowserModule,
+        ContractHttpModule,
+      ],
       declarations: [
         AppComponent
       ],

@@ -19,7 +19,7 @@ module.exports = function (app) {
   /**
    * Returns all contracts
    */
-  app.route('/contracts')
+  app.route('/api/contracts')
     .get((request, response) => {
 
       // TODO: Replace with logging system
@@ -35,7 +35,7 @@ module.exports = function (app) {
    * can pass pages as optional parameter in the search string
    * to return a specific page
    */
-  app.route('/contracts/:contractId')
+  app.route('/api/contracts/:contractId')
     .get((request, response) => {
       var contractId = request.params.contractId;
 
@@ -49,7 +49,7 @@ module.exports = function (app) {
   /**
    * Returns all paragraphs associated with a specific contract
    */
-  app.route('/contracts/:contractId/paragraphs')
+  app.route('/api/contracts/:contractId/paragraphs')
     .get((request, response) => {
       var contractId = request.params.contractId;
 
