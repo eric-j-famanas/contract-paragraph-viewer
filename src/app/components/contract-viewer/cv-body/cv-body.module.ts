@@ -6,6 +6,11 @@ import { CvBodyComponent } from './cv-body.component';
   imports: [
     CommonModule
   ],
-  declarations: [CvBodyComponent]
+  declarations: [
+    CvBodyComponent
+  ],
+  exports: [
+    CvBodyComponent
+  ]
 })
 export class CvBodyModule { }

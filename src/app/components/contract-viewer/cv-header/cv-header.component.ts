@@ -1,15 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
-  selector: 'app-cv-header',
+  selector: 'app-tr-cv-header',
   templateUrl: './cv-header.component.html',
   styleUrls: ['./cv-header.component.css']
 })
-export class CvHeaderComponent implements OnInit {
+export class CvHeaderComponent {
 
-  constructor() { }
-
-  ngOnInit() {
-  }
-
+  @Input('trContractName') contractName: string;
 }

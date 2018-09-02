@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import {ContractHttpModule} from './http/contract-http/contract-http.module';
+import {ContractViewerModule} from './components/contract-viewer/contract-viewer.module';
 
 @NgModule({
   declarations: [
@@ -10,7 +11,7 @@ import {ContractHttpModule} from './http/contract-http/contract-http.module';
   ],
   imports: [
     BrowserModule,
-    ContractHttpModule,
+    ContractViewerModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

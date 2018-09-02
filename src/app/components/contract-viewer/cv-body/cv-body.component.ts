@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-cv-body',
+  selector: 'app-tr-cv-body',
   templateUrl: './cv-body.component.html',
   styleUrls: ['./cv-body.component.css']
 })

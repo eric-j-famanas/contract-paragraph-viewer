@@ -1,15 +1,15 @@
 import { TestBed, inject } from '@angular/core/testing';
 
-import { ContractDataService } from './contract-data.service';
+import { ContractDataStateService } from './contract-data-state.service';
 
-describe('ContractDataService', () => {
+describe('ContractDataStateService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [ContractDataService]
+      providers: [ContractDataStateService]
     });
   });
 
-  it('should be created', inject([ContractDataService], (service: ContractDataService) => {
+  it('should be created', inject([ContractDataStateService], (service: ContractDataStateService) => {
     expect(service).toBeTruthy();
   }));
 });

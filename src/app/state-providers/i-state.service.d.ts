@@ -1,6 +1,6 @@
 import {BehaviorSubject, Observable, Subscription} from 'rxjs';
 
-export interface IStateProviderService<TState> {
+export interface IStateService<TState> {
 
   // the subject that is to be the subject to changes
   behaviorSubject: BehaviorSubject<TState | null>;

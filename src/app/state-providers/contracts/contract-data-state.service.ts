@@ -1,6 +1,5 @@
 import {Injectable} from '@angular/core';
-import {BaseStateProviderService} from '../base-state-provider.service';
-import {IContract} from '../../models/contracts/i-contract';
+import {BaseStateService} from '../base-state.service';
 import {IContractData} from '../../models/data/contracts/i-contract-data';
 import {ContractHttpService} from '../../http/contract-http/contract-http.service';
 import {Observable} from 'rxjs';
@@ -9,13 +8,19 @@ import {IContractParagraphsData} from '../../models/data/contracts/i-contract-pa
 @Injectable({
   providedIn: 'root'
 })
-export class ContractDataService extends BaseStateProviderService<IContractData> {
+export class ContractDataStateService extends BaseStateService<IContractData> {
   constructor(
     private readonly httpClient: ContractHttpService,
   ) {
     super();
   }
 
+  /**
+   * This will return all paragraphs for the current contract that is loaded
+   * as the present state in the observable stream
+   *
+   * @param pageNumber
+   */
   public getParagraphsForContract(pageNumber?: number): Observable<IContractParagraphsData> | null {
     const state = this.getState();
 
