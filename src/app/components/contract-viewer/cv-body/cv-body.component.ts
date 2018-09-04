@@ -15,6 +15,13 @@ export class CvBodyComponent implements OnInit {
   public totalContractParagraphs: IContractParagraph[];
   public displayedContractParagraphs: IContractParagraph[];
 
+  // TODO: move to config
+  public sum = 100;
+  public throttle = 300;
+  public scrollDistance = 1;
+  public scrollUpDistance = 2;
+  public direction = '';
+
   constructor(
     // TODO: Remove after infinite scroll is sorted and async calls are made
     private readonly httpClient: ContractHttpService,
@@ -24,8 +31,42 @@ export class CvBodyComponent implements OnInit {
   ngOnInit() {
     this.httpClient.getAllParagraphsForContract('1').subscribe((response) => {
       this.totalContractParagraphs = response.data;
-      this.displayedContractParagraphs = this.totalContractParagraphs.slice(0, 20);
+      this.displayedContractParagraphs = this.totalContractParagraphs.slice(0, this.sum);
     });
   }
 
+  private appendItems() {
+    for (let i = this.sum; i < this.sum + 20; ++i) {
+      if (i > this.totalContractParagraphs.length) {
+        break;
+      }
+      this.displayedContractParagraphs.push(this.totalContractParagraphs[i]);
+    }
+  }
+
+  private prependItems() {
+    for (let i = 0; i < 20; ++i) {
+      this.displayedContractParagraphs.unshift();
+    }
+  }
+
+  onScrollDown (ev) {
+    console.log('scrolled down!!', ev);
+
+    // add another 20 items
+    const start = this.sum;
+    this.sum += 20;
+    this.appendItems();
+
+    this.direction = 'down';
+  }
+
+  onUp(ev) {
+    console.log('scrolled up!', ev);
+    const start = this.sum;
+    this.sum += 20;
+    this.prependItems();
+
+    this.direction = 'up';
+  }
 }
