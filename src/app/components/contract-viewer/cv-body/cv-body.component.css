@@ -5,6 +5,7 @@
 }
 
 .search-results {
+  overflow: hidden;
   overflow-y: scroll;
   height: 800px;
   border-top: 1px solid cornflowerblue;
