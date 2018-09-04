@@ -1,10 +1,12 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { CvParagraphComponent } from './cv-paragraph.component';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {CvParagraphComponent} from './cv-paragraph.component';
+import {MatCardModule} from '@angular/material';
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    MatCardModule,
   ],
   exports: [
     CvParagraphComponent
@@ -13,4 +15,5 @@ import { CvParagraphComponent } from './cv-paragraph.component';
     CvParagraphComponent
   ]
 })
-export class CvParagraphModule { }
+export class CvParagraphModule {
+}

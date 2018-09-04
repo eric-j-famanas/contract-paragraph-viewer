@@ -7,35 +7,4 @@ import {ContractHttpService} from './http/contract-http/contract-http.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'contract-paragraph-viewer';
-
-  constructor(
-    private readonly contractHttp: ContractHttpService,
-  ) {
-
-  }
-
-  public testGetAllRequest() {
-    this.contractHttp.getAllContracts().subscribe((data) => {
-      console.log(data);
-    });
-  }
-
-  public testGetIdRequest() {
-    this.contractHttp.getSingleContract('1').subscribe((data) => {
-      console.log(data);
-    });
-  }
-
-  public testGetIdWithAllParagraphsForPage() {
-    this.contractHttp.getAllParagraphsForContract('1', 1).subscribe((data) => {
-      console.log(data);
-    });
-  }
-
-  public testGetIdWithAllParagraphs() {
-    this.contractHttp.getAllParagraphsForContract('1').subscribe((data) => {
-      console.log(data);
-    });
-  }
 }

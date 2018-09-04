@@ -16,7 +16,7 @@ export class CvBodyComponent implements OnInit {
   public displayedContractParagraphs: IContractParagraph[];
 
   // TODO: move to config
-  public sum = 100;
+  public sum = 100; // TODO: this should mutate with each change
   public throttle = 300;
   public scrollDistance = 1;
   public scrollUpDistance = 2;
@@ -52,10 +52,7 @@ export class CvBodyComponent implements OnInit {
 
   onScrollDown (ev) {
     console.log('scrolled down!!', ev);
-
-    // add another 20 items
-    const start = this.sum;
-    this.sum += 20;
+    // TODO: This should be making an SL call
     this.appendItems();
 
     this.direction = 'down';
@@ -63,8 +60,7 @@ export class CvBodyComponent implements OnInit {
 
   onUp(ev) {
     console.log('scrolled up!', ev);
-    const start = this.sum;
-    this.sum += 20;
+    // TODO: this should be caching the paragraph index popped
     this.prependItems();
 
     this.direction = 'up';

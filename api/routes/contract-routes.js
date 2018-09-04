@@ -79,6 +79,7 @@ module.exports = function (app) {
   };
 
   // DEV / TESTING ONLY
+  // TODO: Move to generators
   const getContract = () => {
     return {
       data: {
@@ -121,7 +122,8 @@ module.exports = function (app) {
       type: "contract-paragraphs",
       id: "0d60b462-2b98-11e8-97a1-080027a8df8b",
       attributes: {
-        text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat"
+        text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Amet justo donec enim diam vulputate ut pharetra. Fermentum dui faucibus in ornare quam viverra orci sagittis. Purus non enim praesent elementum facilisis leo vel. Vitae semper quis lectus nulla at volutpat diam ut. Facilisi etiam dignissim diam quis. Nunc lobortis mattis aliquam faucibus. Aliquam vestibulum morbi blandit cursus risus. Duis at tellus at urna condimentum mattis pellentesque id. Pharetra magna ac placerat vestibulum lectus mauris ultrices eros in. Nascetur ridiculus mus mauris vitae ultricies leo integer. Semper auctor neque vitae tempus. Vel facilisis volutpat est velit egestas dui. Dui sapien eget mi proin sed libero enim sed faucibus. Leo vel fringilla est ullamcorper eget. Sed risus pretium quam vulputate. Odio morbi quis commodo odio aenean sed adipiscing diam. Blandit aliquam etiam erat velit.\n" +
+          "\n"
       }
     };
   }

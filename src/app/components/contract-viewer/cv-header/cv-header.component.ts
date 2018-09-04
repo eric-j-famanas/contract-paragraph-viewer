@@ -1,4 +1,4 @@
-import {AfterContentInit, Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
+import {Component, Input, OnChanges, SimpleChanges} from '@angular/core';
 import {IContractData} from '../../../models/data/contracts/i-contract-data';
 
 @Component({

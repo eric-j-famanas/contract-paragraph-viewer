@@ -1,9 +1,9 @@
-<div>
-  Header -----
-  <app-tr-cv-header [trContractData]="contract"></app-tr-cv-header>
+<div class="contract-viewer">
+  <div>
+    <app-tr-cv-header [trContractData]="contract"></app-tr-cv-header>
+  </div>
+  <div>
+    <app-tr-cv-body [trContractData]="contract"></app-tr-cv-body>
+  </div>
 </div>
-<hr />
-<div>
-  Body -----
-  <app-tr-cv-body [trContractData]="contract"></app-tr-cv-body>
-</div>
+

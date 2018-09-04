@@ -1,9 +1,13 @@
-<div class="search-results" infinite-scroll
-     [infiniteScrollDistance]="scrollDistance"
-     [infiniteScrollUpDistance]="scrollUpDistance"
-     [infiniteScrollThrottle]="throttle"
-     (scrolled)="onScrollDown()"
-     (scrolledUp)="onUp()">
-  <app-tr-cv-paragraph *ngFor="let paragraph of displayedContractParagraphs"
-                       [trParagraphText]="paragraph.attributes.text"></app-tr-cv-paragraph>
+<div class="cv-body-viewport">
+  <div class="search-results" infinite-scroll
+       [infiniteScrollDistance]="scrollDistance"
+       [infiniteScrollUpDistance]="scrollUpDistance"
+       [infiniteScrollThrottle]="throttle"
+       [scrollWindow]="false"
+       (scrolled)="onScrollDown()"
+       (scrolledUp)="onUp()">
+    <app-tr-cv-paragraph *ngFor="let paragraph of displayedContractParagraphs"
+                         [trParagraphText]="paragraph.attributes.text"></app-tr-cv-paragraph>
+  </div>
 </div>
+
