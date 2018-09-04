@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {IContractData} from '../../../models/data/contracts/i-contract-data';
 
 @Component({
   selector: 'app-tr-cv-header',
@@ -7,5 +8,5 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class CvHeaderComponent {
 
-  @Input('trContractName') contractName: string;
+  @Input('trContractData') contract: IContractData;
 }

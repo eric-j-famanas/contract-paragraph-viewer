@@ -1,10 +1,14 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { CvBodyComponent } from './cv-body.component';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {CvBodyComponent} from './cv-body.component';
+import {CvParagraphModule} from './cv-paragraph/cv-paragraph.module';
+import {InfiniteScrollModule} from 'ngx-infinite-scroll';
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    CvParagraphModule,
+    InfiniteScrollModule,
   ],
   declarations: [
     CvBodyComponent
@@ -13,4 +17,5 @@ import { CvBodyComponent } from './cv-body.component';
     CvBodyComponent
   ]
 })
-export class CvBodyModule { }
+export class CvBodyModule {
+}

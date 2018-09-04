@@ -2,6 +2,10 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.1.5.
 
+## Pre-requisites
+
+The machine running the application must have node.js and npm installed. 
+
 ## Installation
 
 Download or clone the repository to your local machine. Navigate to the directory and run `npm install` to download all the dependencies.

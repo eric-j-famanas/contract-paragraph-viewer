@@ -1,3 +1,4 @@
-<p>
-  cv-body works!
-</p>
+<div class="search-results" infinite-scroll>
+  <app-tr-cv-paragraph *ngFor="let paragraph of displayedContractParagraphs"
+                       [trParagraphText]="paragraph.attributes.text"></app-tr-cv-paragraph>
+</div>

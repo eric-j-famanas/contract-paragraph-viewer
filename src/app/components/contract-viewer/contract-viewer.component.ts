@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {BaseStateService} from '../../state-providers/base-state.service';
 import {IContractData} from '../../models/data/contracts/i-contract-data';
 import {ContractHttpService} from '../../http/contract-http/contract-http.service';
+import {IContractParagraphsData} from '../../models/data/contracts/i-contract-paragraphs-data';
 
 @Component({
   selector: 'app-tr-contract-viewer',
@@ -10,7 +11,7 @@ import {ContractHttpService} from '../../http/contract-http/contract-http.servic
 })
 export class ContractViewerComponent implements OnInit {
 
-  public contractName: string;
+  public contract: IContractData;
 
   constructor(
     private readonly httpService: ContractHttpService,
@@ -26,9 +27,8 @@ export class ContractViewerComponent implements OnInit {
 
     this.stateProvider.subscribeToState((state: IContractData) => {
       if (state != null) {
-        this.contractName = state.data.attributes.name;
+        this.contract = state;
       }
     });
   }
-
 }
