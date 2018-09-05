@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ContractViewerComponent } from './contract-viewer.component';
+import {CvHeaderModule} from './cv-header/cv-header.module';
+import {CvBodyModule} from './cv-body/cv-body.module';
 
 describe('ContractViewerComponent', () => {
   let component: ContractViewerComponent;
@@ -8,6 +10,10 @@ describe('ContractViewerComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [
+        CvHeaderModule,
+        CvBodyModule,
+      ],
       declarations: [ ContractViewerComponent ]
     })
     .compileComponents();

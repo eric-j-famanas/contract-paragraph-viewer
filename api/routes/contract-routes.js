@@ -1,6 +1,10 @@
 'use strict';
 
 const url = require('url');
+const fs = require('fs');
+
+// UGH Global variable... hack because we don't have an actual db
+var currentParagraph = 0;
 
 module.exports = function (app) {
 
@@ -67,8 +71,11 @@ module.exports = function (app) {
       // TODO: Replace with logging system
       console.log(`User has all paragraphs a specific contract: ${contractId}`);
 
+      // TODO: the id should call a specific contract when we have more than one
+      // TODO: it will call the id from the database and return all paragraphs with that id
+
       // Send a JSON response
-      response.send(JSON.stringify(getParagraphs()))
+      response.send(JSON.parse(fs.readFileSync('./src/assets/source-text-data/contract-paragraph-data.json')));
     });
 
 
@@ -98,33 +105,4 @@ module.exports = function (app) {
       }
     }
   };
-
-  const getParagraphs = () => {
-    const paragraphData = [];
-
-    for (let i = 0; i < 1000; i++) {
-      paragraphData.push(getParagraph());
-    }
-
-    return {
-      data: paragraphData,
-      pagination: {
-        count: 15000,
-        page: 1,
-        pages: 300,
-        pageSize: 50
-      }
-    };
-  };
-
-  const getParagraph = () => {
-    return {
-      type: "contract-paragraphs",
-      id: "0d60b462-2b98-11e8-97a1-080027a8df8b",
-      attributes: {
-        text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Amet justo donec enim diam vulputate ut pharetra. Fermentum dui faucibus in ornare quam viverra orci sagittis. Purus non enim praesent elementum facilisis leo vel. Vitae semper quis lectus nulla at volutpat diam ut. Facilisi etiam dignissim diam quis. Nunc lobortis mattis aliquam faucibus. Aliquam vestibulum morbi blandit cursus risus. Duis at tellus at urna condimentum mattis pellentesque id. Pharetra magna ac placerat vestibulum lectus mauris ultrices eros in. Nascetur ridiculus mus mauris vitae ultricies leo integer. Semper auctor neque vitae tempus. Vel facilisis volutpat est velit egestas dui. Dui sapien eget mi proin sed libero enim sed faucibus. Leo vel fringilla est ullamcorper eget. Sed risus pretium quam vulputate. Odio morbi quis commodo odio aenean sed adipiscing diam. Blandit aliquam etiam erat velit.\n" +
-          "\n"
-      }
-    };
-  }
 };

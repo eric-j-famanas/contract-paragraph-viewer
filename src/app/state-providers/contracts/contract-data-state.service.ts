@@ -4,11 +4,12 @@ import {IContractData} from '../../models/data/contracts/i-contract-data';
 import {ContractHttpService} from '../../http/contract-http/contract-http.service';
 import {Observable} from 'rxjs';
 import {IContractParagraphsData} from '../../models/data/contracts/i-contract-paragraphs-data';
+import {BaseVirtualizedScrollStateService} from '../base-virtualized-scroll-state.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ContractDataStateService extends BaseStateService<IContractData> {
+export class ContractDataStateService extends BaseVirtualizedScrollStateService<IContractData> {
   constructor(
     private readonly httpClient: ContractHttpService,
   ) {
