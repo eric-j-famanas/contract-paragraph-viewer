@@ -15,45 +15,56 @@ export class CvBodyComponent implements OnInit {
   public totalContractParagraphs: IContractParagraph[];
   public displayedContractParagraphs: IContractParagraph[];
 
-  // TODO: move to config
-  public sum = 100; // TODO: this should mutate with each change
+  public sum = 100;
   public throttle = 300;
   public scrollDistance = 1;
   public scrollUpDistance = 2;
   public direction = '';
 
+  public isLoading = false;
+
   constructor(
-    // TODO: Remove after infinite scroll is sorted and async calls are made
     private readonly httpClient: ContractHttpService,
   ) {
   }
 
   ngOnInit() {
-    this.httpClient.getAllParagraphsForContract('1').subscribe((response) => {
+    this.isLoading = true;
+    this.httpClient.getAllParagraphsForContract('"dc89ff49-8449-11e7-ac1d-3c52820efd20"').subscribe((response) => {
       this.totalContractParagraphs = response.data;
       this.displayedContractParagraphs = this.totalContractParagraphs.slice(0, this.sum);
+      this.isLoading = false;
     });
   }
 
+  // As you scroll down, the items should add 20 from the "service layer"
   private appendItems() {
+    // TODO: Instead of calling a local function, this should be making a RESTApi call instead
+    // TODO: returning the next 20 items
     for (let i = this.sum; i < this.sum + 20; ++i) {
       if (i > this.totalContractParagraphs.length) {
         break;
       }
       this.displayedContractParagraphs.push(this.totalContractParagraphs[i]);
     }
+
+    this.sum += 20;
   }
 
+  // As you scroll up, the recently added items should be destroyed
   private prependItems() {
     for (let i = 0; i < 20; ++i) {
       this.displayedContractParagraphs.unshift();
     }
   }
 
-  onScrollDown (ev) {
+  onScrollDown(ev) {
     console.log('scrolled down!!', ev);
-    // TODO: This should be making an SL call
-    this.appendItems();
+
+    // Hax to mock latency
+    setTimeout(() => {
+      this.appendItems();
+    }, 1000);
 
     this.direction = 'down';
   }

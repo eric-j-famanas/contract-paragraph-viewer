@@ -1,4 +1,5 @@
 <div class="cv-body-viewport">
+  <span *ngIf="isLoading">Loading Data. Please wait... (The load is currently 100k pargraphs, if the data was partitioned per api call, this would be faster)</span>
   <div class="search-results" infinite-scroll
        [infiniteScrollDistance]="scrollDistance"
        [infiniteScrollUpDistance]="scrollUpDistance"

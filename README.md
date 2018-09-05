@@ -4,11 +4,13 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Pre-requisites
 
-The machine running the application must have node.js and npm installed. 
+The machine running the application must have node.js, nodemon, and npm installed. 
 
 ## Installation
 
 Download or clone the repository to your local machine. Navigate to the directory and run `npm install` to download all the dependencies.
+
+After downloading all dependencies, navigate to the directory and run node generate-data.js to generate the contract paragraph data.
 
 ## Development REST API
 

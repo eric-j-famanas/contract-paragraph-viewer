@@ -3,9 +3,6 @@
 const url = require('url');
 const fs = require('fs');
 
-// UGH Global variable... hack because we don't have an actual db
-var currentParagraph = 0;
-
 module.exports = function (app) {
 
   /**
@@ -47,7 +44,11 @@ module.exports = function (app) {
       console.log(`User has requested a specific contract: ${contractId}`);
 
       // Send a JSON response
-      response.send(JSON.stringify(getContract()))
+      if (contractId === "dc89ff49-8449-11e7-ac1d-3c52820efd20") {
+        response.send(JSON.stringify(getContract()));
+      } else {
+        response.send("Id is invalid")
+      }
     });
 
   /**
@@ -74,7 +75,6 @@ module.exports = function (app) {
       // TODO: the id should call a specific contract when we have more than one
       // TODO: it will call the id from the database and return all paragraphs with that id
 
-      // Send a JSON response
       response.send(JSON.parse(fs.readFileSync('./src/assets/source-text-data/contract-paragraph-data.json')));
     });
 

@@ -21,7 +21,7 @@ export class ContractViewerComponent implements OnInit {
 
   ngOnInit() {
     // TODO: This should observe the selection from a menu, perform the request, and set the state
-    this.httpService.getSingleContract('1').subscribe((data) => {
+    this.httpService.getSingleContract('dc89ff49-8449-11e7-ac1d-3c52820efd20').subscribe((data) => {
       this.stateProvider.setState(data);
     });
 

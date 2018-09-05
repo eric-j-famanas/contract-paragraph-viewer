@@ -17,6 +17,7 @@ export abstract class BaseStateService<TState> implements IStateService<TState> 
   /**
    * Sets the most current value in the behavior subject.
    * This will also set the most current value in the observable stream
+   * Use this function to swap states in a multi-state application
    *
    * @param state
    */
